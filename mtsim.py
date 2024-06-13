@@ -146,8 +146,9 @@ print()
 print("Testing mt_array_read with block-cyclic array:")
 for i in range(10):
     value = mt_array_read(example_array_cyclic, i)
-    print(f"Value at index {i} is {value}")
+    print(f"Value at index {i} is {value}")i
 
+print()
 print("Testing mt_array_read with single-node array:")
 for i in range(10):
     value = mt_array_read(example_array_single, i)
