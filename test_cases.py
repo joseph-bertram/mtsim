@@ -76,7 +76,7 @@ for i in range(10):
 print() # print new line for aesthetic purpose
 print("Testing mt_array_read with block-cyclic array:")
 for i in range(10):
-    value = mt_array_read(example_array_cyclic, i) # returns the value of example_array_cyclic at index i upon running mt_array_read.
+    value = mt_array_read(example_array_cyclic, i, False) # returns the value of example_array_cyclic at index i upon running mt_array_read.
     print(f"Value at index {i} is {value}")
 
 '''
@@ -86,24 +86,55 @@ for i in range(10):
 print() # print new line for aesthetic purpose
 print("Testing mt_array_read with single-node array:")
 for i in range(10):
-    value = mt_array_read(example_array_single, i) # returns the value of example_array_single at index i upon running mt_array_read
+    value = mt_array_read(example_array_single, i, False) # returns the value of example_array_single at index i upon running mt_array_read
     print(f"Value at index {i} is {value}")
+
+### Test cases for mt_array_write(x, i)
+'''
+    testing mt_array_write to write example_array_cyclic (an array)
+    only the first 10 elements of example_array_cyclic will be overwritten (from index 0 to 9)
+'''
+print() # prints new line for aesthetic purpose
+print("Testing mt_array_write with block-cyclic array")
+for i in range(10):
+    print(f"Value at index {i} before write is {example_array_cyclic[i]}")
+    mt_array_write(example_array_cyclic, i, 30) # runs the mt_array_write with example_array_cyclic as its array, i as its index, and 30 as its new value
+    print(f"Value at index {i} after write is {example_array_cyclic[i]}")
+
+'''
+    testing mt_array_write to write example_array_single (an array)
+    only the first 10 elements of example_array_single will be overwritten (from index 0 to 9)
+'''
+print() # prints new line for aesthetic purpose
+print("Testing mt_array_write with single-node array")
+for i in range(10):
+    print(f"Value at index {i} before write is {example_array_single[i]}")
+    mt_array_write(example_array_single, i, 50) # runs the mt_array_write with example_array_single as its array, i as its index, and 50 as its new value
+    print(f"Value at index {i} after write is {example_array_single[i]}")
 
 ### Test cases for summing up all the elements in example_array_cyclic
 print() # prints new line for aesthetic purpose
 total = 0
 for i in range(0, len(example_array_cyclic)):
-    total = total + mt_array_read(example_array_cyclic, i)
+    total = total + mt_array_read(example_array_cyclic, i, False)
 print(f"The total accumulated in example_array_cyclic is {total}")
 
 ### Test cases for summing up all the elements in example_array_single
 print() # prints new line for aesthetic purpose
 total = 0
 for i in range(0, len(example_array_single)):
-    total = total + mt_array_read(example_array_single, i)
+    total = total + mt_array_read(example_array_single, i, False)
 print(f"The total accumulated in example_array_cyclic is {total}")
 
+### Test cases for mt_stats_thread()
+print() # prints new line for aesthetic purpose
+for i in range(0, len(thread_matrix)):
+    mt_stats_thread(i)
 
+### Test cases for mt_stats_node()
+print() # prints new line for aesthetic purpose
+for i in range(0, len(node_matrix)):
+    mt_stats_node(i)
     
 
 
